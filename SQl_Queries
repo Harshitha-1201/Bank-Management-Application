@@ -1,0 +1,53 @@
++--------------+---------------+------+-----+-------------------+-------------------+
+| Field        | Type          | Null | Key | Default           | Extra             |
++--------------+---------------+------+-----+-------------------+-------------------+
+| cardnumber   | varchar(16)   | NO   | PRI | NULL              |                   |
+| balance      | decimal(10,2) | YES  |     | 0.00              |                   |
+| last_updated | timestamp     | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+
+
+mysql> DESCRIBE transactions;
++------------+-----------------------------------------+------+-----+-------------------+-------------------+
+| Field      | Type                                    | Null | Key | Default           | Extra             |
++------------+-----------------------------------------+------+-----+-------------------+-------------------+
+| id         | int                                     | NO   | PRI | NULL              | auto_increment    |
+| cardnumber | varchar(16)                             | YES  | MUL | NULL              |                   |
+| type       | enum('DEPOSIT','WITHDRAWAL','FASTCASH') | NO   |     | NULL              |                   |
+| amount     | decimal(10,2)                           | NO   |     | NULL              |                   |
+| timestamp  | timestamp                               | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++------------+-----------------------------------------+------+-----+-------------------+-------------------+
+
+
++-----------------+
+| Tables_in_bms   |
++-----------------+
+| account_balance |
+| transactions    |
+| users_data      |
++-----------------+
+3 rows in set (0.02 sec)
+
+mysql> DESCRIBE account_balance;
+
+
+mysql> DESCRIBE users_data;
++-------------------+---------------------------------------------------------------------------------------------+------+-----+---------+----------------+
+| Field             | Type                                                                                        | Null | Key | Default | Extra          |
++-------------------+---------------------------------------------------------------------------------------------+------+-----+---------+----------------+
+| id                | int                                                                                         | NO   | PRI | NULL    | auto_increment |
+| name              | varchar(100)                                                                                | NO   |     | NULL    |                |
+| father_name       | varchar(100)                                                                                | NO   |     | NULL    |                |
+| date_of_birth     | date                                                                                        | NO   |     | NULL    |                |
+| gender            | enum('Male','Female')                                                                       | NO   |     | NULL    |                |
+| email             | varchar(100)                                                                                | NO   |     | NULL    |                |
+| marital_status    | enum('Yes','No','Other')                                                                    | NO   |     | NULL    |                |
+| address           | text                                                                                        | NO   |     | NULL    |                |
+| city              | varchar(100)                                                                                | NO   |     | NULL    |                |
+| pincode           | char(6)                                                                                     | NO   |     | NULL    |                |
+| state             | varchar(100)                                                                                | NO   |     | NULL    |                |
+| card_number       | varchar(16)                                                                                 | YES  | UNI | NULL    |                |
+| pin               | varchar(4)                                                                                  | YES  |     | NULL    |                |
+| account_type      | enum('Saving Account','Fixed Deposit Account','Current Account','Recurring Deposit Amount') | YES  |     | NULL    |                |
+| services_required | text                                                                                        | YES  |     | NULL    |                |
++-------------------+---------------------------------------------------------------------------------------------+------+-----+---------+----------------+
+15 rows in set (0.01 sec)
